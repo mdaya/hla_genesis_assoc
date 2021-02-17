@@ -27,6 +27,11 @@ iterator <- GenotypeBlockIterator(genoData)
 #Run association model
 assoc <- assocTestSingle(gdsobj=iterator, null.model=nullmod, test="Score")
 
+#Merge in effect allele information
+bim.frame <- read.table(bim.fn, stringsAsFactors=F)
+allele.frame <- data.frame(variant.id=bim.frame$V2, EA=bim.frame$V5, NEA=bim.frame$V6)
+assoc <- merge(assoc, allele.frame)
+
 #Write association output
 write.table(assoc,file=out.file.name, sep="\t",row.names=F,col.names=T,quote=F)
 
