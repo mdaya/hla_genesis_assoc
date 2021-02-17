@@ -4,7 +4,7 @@
 #Note: it is assumed that the HLA-LAoutput files have the formaat <sample-id>_*.txt; 
 #the sample-id is extracted as the first "_" seperated filed in the filename
 args <- commandArgs(trailingOnly = TRUE)
-hla.la.out.dir <- args[1]
+hla.la.out.dir <- paste0(args[1], "/")
 min.Q1 <- args[2]
 min.avg.cov <- args[3]
 incl.genes.str <- args[4]
